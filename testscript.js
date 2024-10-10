@@ -107,7 +107,8 @@ var programCode = function(processingInstance) {
             snake = newSnake;
 
             // Render the snake
-            for (var i = 0; i < snake.length; i++) {
+            image("u.png", snake[0][0], snake[0][1], 25, 25);
+            for (var i = 1; i < snake.length; i++) {
                 fill(i === 0 ? headColor : restColor);
                 rect(snake[i][0], snake[i][1], 25, 25);
             }
