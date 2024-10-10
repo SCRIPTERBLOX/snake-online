@@ -1,7 +1,7 @@
 var programCode = function(processingInstance) {
     with (processingInstance) {
-        var width = 500;
-        var height = 500;
+        var width = 700;
+        var height = 700;
 
         var widthStuds = width / 25;
         var heightsStuds = height / 25;
@@ -13,9 +13,9 @@ var programCode = function(processingInstance) {
         var food = [250, 350];
 
         var defaultSnake = [
-            [250, 250],
-            [250, 275],
-            [250, 300]
+            [width/2, height/2],
+            [width/2, height/2+25],
+            [width/2, height/2+50]
         ];
 
         var snake = defaultSnake;
