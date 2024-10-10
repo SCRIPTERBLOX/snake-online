@@ -65,7 +65,7 @@ var programCode = function(processingInstance) {
             else if (dir == "s") head[1] += 25;
             else if (dir == "d") head[0] += 25;
 
-            background(100, 100, 100);
+            background(50, 50, 50);
 
             // Check for wall collision
             if (head[1] > height - 25 || head[1] < 0 || head[0] > width - 25 || head[0] < 0) {
@@ -107,8 +107,7 @@ var programCode = function(processingInstance) {
             snake = newSnake;
 
             // Render the snake
-            image("u.png", snake[0][0], snake[0][1], 25, 25);
-            for (var i = 1; i < snake.length; i++) {
+            for (var i = 0; i < snake.length; i++) {
                 fill(i === 0 ? headColor : restColor);
                 rect(snake[i][0], snake[i][1], 25, 25);
             }
