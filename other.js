@@ -1,6 +1,6 @@
 var programCode = function(processingInstance) {
     with (processingInstance) {
-        var width = 300;
+        var width = 200;
         var height = 500;
 
         size(width, height, 1);
