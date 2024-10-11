@@ -1,24 +1,25 @@
+var snake;
+var time = 1;
+
 var programCode = function(processingInstance) {
     with (processingInstance) {
-        var width = 700;
-        var height = 700;
+        var width = 600;
+        var height = 600;
 
         var widthStuds = width / 25;
         var heightsStuds = height / 25;
 
-        size(height, width, 1);
+        size(width, height, 1);
         frameRate(2);
 
         var growing = false;
         var food = [250, 350];
 
         var defaultSnake = [
-            [width/2, height/2],
-            [width/2, height/2+25],
-            [width/2, height/2+50]
+            [width/2, height/2]
         ];
 
-        var snake = defaultSnake;
+        snake = defaultSnake;
 
         var dir = "w";
         var nextDir = "w";
@@ -34,6 +35,7 @@ var programCode = function(processingInstance) {
             dir = "w";
             nextDir = "w";
             snake = defaultSnake.map(segment => [...segment]);
+            time = 1;
         }
 
         function arrayIncludes(arr, coord) {
@@ -44,9 +46,6 @@ var programCode = function(processingInstance) {
             var x = Math.floor(Math.random() * widthStuds) * 25;
             var y = Math.floor(Math.random() * heightsStuds) * 25;
 
-            console.log(x);
-            console.log(y);
-
             if (arrayIncludes(snake, [x, y])) {
                 console.log("Can't spawn there");
                 return getPos(); // Call recursively until a valid position is found
@@ -56,6 +55,7 @@ var programCode = function(processingInstance) {
         }
 
         draw = function() {
+            time += 0.5;
             dir = nextDir;
 
             let head = [...snake[0]];
@@ -67,10 +67,20 @@ var programCode = function(processingInstance) {
 
             background(50, 50, 50);
 
-            // Check for wall collision
-            if (head[1] > height - 25 || head[1] < 0 || head[0] > width - 25 || head[0] < 0) {
-                myFunction();
-                return;
+            if (head[1] > height) {
+                head[1] = 0
+            }
+
+            if (head[0] > width) {
+                head[0] = 0
+            }
+
+            if (head[1] < 0) {
+                head[1] = height
+            }
+
+            if (head[0] < 0) {
+                head[0] = width
             }
 
             noStroke();
@@ -120,6 +130,6 @@ var programCode = function(processingInstance) {
 };
 
 // Get the canvas that ProcessingJS will use
-var canvas = document.getElementById("mycanvas");
+var canvas = document.getElementById("snake");
 // Pass the function to ProcessingJS constructor
 var processingInstance = new Processing(canvas, programCode);
