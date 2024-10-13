@@ -2,28 +2,27 @@ var score;
 
 var programCode = function(processingInstance) {
     with (processingInstance) {
-        var width = 400;
-        var height = 400;
+        var width = 500;
+        var height = 500;
 
         size(width, height, 1);
         frameRate(10);
 
 
        mousePressed = function() {
-       console.log(mouseX+", "+mouseY);
-            if (mouseX >= 175 && mouseX <= 225 && mouseY >= 0 && mouseY <= 150) {
+            if (mouseX >= 200 && mouseX <= 300 && mouseY >= 0 && mouseY <= 200) {
                 nextDir = "w";
             }
 
-            if (mouseX >= 175 && mouseX <= 225 && mouseY >= 250 && mouseY <= 400) {
+            if (mouseX >= 200 && mouseX <= 300 && mouseY >= 300 && mouseY <= 500) {
                 nextDir = "s";
             }
 
-            if (mouseX >= 0 && mouseX <= 150 && mouseY >= 175 && mouseY <= 225) {
+            if (mouseX >= 0 && mouseX <= 200 && mouseY >= 200 && mouseY <= 300) {
                 nextDir = "a";
             }
 
-            if (mouseX >= 250 && mouseX <= 400 && mouseY >= 175 && mouseY <= 225) {
+            if (mouseX >= 300 && mouseX <= 500 && mouseY >= 200 && mouseY <= 300) {
                 nextDir = "d";
             }
        }
@@ -32,10 +31,10 @@ var programCode = function(processingInstance) {
             background(50, 50, 50);
             fill(255, 0, 0)
 
-            rect(175, 0, 50, 150);
-            rect(175, 250, 50, 150);
-            rect(0, 175, 150, 50);
-            rect(250, 175, 150, 50);
+            rect(200, 0, 100, 200);
+            rect(200, 300, 100, 200);
+            rect(0, 200, 200, 100);
+            rect(300, 200, 200, 100);
         };
     }
 };
