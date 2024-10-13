@@ -1,6 +1,9 @@
 var snake;
 var time = 1;
 
+var dir = "w";
+var nextDir = "w";
+
 var programCode = function(processingInstance) {
     with (processingInstance) {
         var width = 600;
@@ -20,9 +23,6 @@ var programCode = function(processingInstance) {
         ];
 
         snake = defaultSnake;
-
-        var dir = "w";
-        var nextDir = "w";
 
         keyPressed = function() {
             if (key.toString() == "w" && dir != "s") nextDir = "w";

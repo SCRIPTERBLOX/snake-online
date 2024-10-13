@@ -23,6 +23,10 @@
         td {
             vertical-align: top;
         }
+
+        td2 {
+            vertical-align: top;
+        }
     </style>
 </head>
 <body>
@@ -32,21 +36,25 @@
 </h1>
 
 <center>
-<table>
+<table valign="top">
     <thead>
     <tr>
         <td><canvas id="score"></canvas>
         <td><canvas id="snake"></canvas>
         <td><canvas id="other"></canvas>
     </tr>
+
+    <tr>
+        <td><canvas id="mobile-controls"></canvas> </td>
+    </tr>
     </thead>
 </table>
-
 </center>
 
 <script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script>
 <script src="snake.js"></script>
 <script src="score.js"></script>
+<script src="mobile-controls.js"></script>
 <script src="other.js"></script>
 
 </body>
