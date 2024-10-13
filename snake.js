@@ -56,7 +56,18 @@ var programCode = function(processingInstance) {
 
         draw = function() {
             time += 0.5;
-            dir = nextDir;
+            if (nextDir == "w" && dir != "s") {
+                dir = "w";
+            }
+            if (nextDir == "s" && dir != "w") {
+                dir = "s";
+            }
+            if (nextDir == "a" && dir != "d") {
+                dir = "a";
+            }
+            if (nextDir == "d" && dir != "a") {
+                dir = "d"
+            }
 
             let head = [...snake[0]];
 

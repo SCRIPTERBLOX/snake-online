@@ -2,8 +2,8 @@ var score;
 
 var programCode = function(processingInstance) {
     with (processingInstance) {
-        var width = 500;
-        var height = 500;
+        var width = 700;
+        var height = 700;
 
         size(width, height, 1);
         frameRate(10);
@@ -31,7 +31,7 @@ var programCode = function(processingInstance) {
             background(50, 50, 50);
             fill(255, 0, 0)
 
-            rect(200, 0, 100, 200);
+            rect(250, 0, 100, 200);
             rect(200, 300, 100, 200);
             rect(0, 200, 200, 100);
             rect(300, 200, 200, 100);
