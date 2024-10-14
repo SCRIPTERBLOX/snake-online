@@ -1,8 +1,11 @@
 var snake;
 var time = 1;
+var speed = 2;
 
 var dir = "w";
 var nextDir = "w";
+
+var growFor = 7;
 
 var programCode = function(processingInstance) {
     with (processingInstance) {
@@ -13,7 +16,7 @@ var programCode = function(processingInstance) {
         var heightsStuds = height / 25;
 
         size(width, height, 1);
-        frameRate(2);
+        frameRate(speed);
 
         var growing = false;
         var food = [250, 350];
@@ -29,6 +32,17 @@ var programCode = function(processingInstance) {
             else if (key.toString() == "a" && dir != "d") nextDir = "a";
             else if (key.toString() == "s" && dir != "w") nextDir = "s";
             else if (key.toString() == "d" && dir != "a") nextDir = "d";
+
+            if (key.toString() == "1") speed = 1;
+            else if (key.toString() == "2") speed = 2;
+            else if (key.toString() == "3") speed = 3;
+            else if (key.toString() == "4") speed = 4;
+            else if (key.toString() == "5") speed = 5;
+            else if (key.toString() == "6") speed = 6;
+            else if (key.toString() == "7") speed = 7;
+            else if (key.toString() == "8") speed = 8;
+            else if (key.toString() == "9") speed = 9;
+            else if (key.toString() == "0") speed = 10;
         };
 
         function myFunction() {
@@ -55,7 +69,8 @@ var programCode = function(processingInstance) {
         }
 
         draw = function() {
-            time += 0.5;
+            frameRate(speed);
+            time += 1/speed;
             if (nextDir == "w" && dir != "s") {
                 dir = "w";
             }
@@ -116,13 +131,20 @@ var programCode = function(processingInstance) {
                 growing = true;
             }
 
-            if (!growing) {
+            if (!growing && growFor == 0) {
                 newSnake.pop();
-            } else {
+            } else if (growing && growFor == 0) {
                 growing = false;
-                var [foodX, foodY] = getPos(); // Call getPos to get new food position
+                var [foodX, foodY] = getPos();
                 food[0] = foodX;
                 food[1] = foodY;
+            } else if (growing && growFor > 0) {
+                growing = false;
+                var [foodX, foodY] = getPos();
+                food[0] = foodX;
+                food[1] = foodY;
+            } else {
+                growFor -= 1;
             }
 
             snake = newSnake;
