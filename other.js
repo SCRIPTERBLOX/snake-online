@@ -29,6 +29,7 @@ var programCode = function(processingInstance) {
             else if (key.toString() == "8") speed = 8;
             else if (key.toString() == "9") speed = 9;
             else if (key.toString() == "0") speed = 10;
+            else if (key.toString() == "p") speed = 0;
         }
 
         keyPressed = function() {
