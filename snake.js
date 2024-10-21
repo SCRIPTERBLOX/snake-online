@@ -50,13 +50,29 @@ var programCode = function(processingInstance) {
             else if (key.toString() == "0") speed = 10;
         };
 
+        mousePressed = function() {
+            if (onDeath) {
+                if (mouseX >= 150 && mouseX <= 150+125 && mouseY >= 325 && mouseY <= 325+75) {
+                    if (tokens >= 1) {
+                        tokens -= 1;
+
+                        revive();
+                    }
+                } else if (mouseX >= 325 && mouseX <= 325+125 && mouseY >= 325 && mouseY <= 325+75) {
+                    respawn();
+                }
+            }
+        }
+
         function myFunction() {
             onDeath = true;
-            prevLength = snake.length;
+            if (snake.length > prevLength) {
+                prevLength = snake.length;
+            }
         }
 
         function revive() {
-            growFor = prevLength;
+            growFor = prevLength-1;
 
             pause = false;
             onDeath = false;
@@ -72,6 +88,8 @@ var programCode = function(processingInstance) {
             nextDir = "w";
             snake = defaultSnake.map(segment => [...segment]);
             time = 1;
+            pause = false;
+            onDeath = false;
         }
 
         function arrayIncludes(arr, coord) {
@@ -228,6 +246,7 @@ var programCode = function(processingInstance) {
                     text("Resets length", 328, 390);
 
                     // detect click
+
                 }
            }
         };
