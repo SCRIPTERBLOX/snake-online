@@ -8,7 +8,7 @@ var nextDir = "w";
 var growFor = 0;
 
 var pause = false;
-var onDeath = true;
+var onDeath = false;
 
 var prevLength = 0;
 
