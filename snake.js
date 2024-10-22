@@ -14,6 +14,12 @@ var prevLength = 0;
 
 var programCode = function(processingInstance) {
     with (processingInstance) {
+        var uImg;
+
+        setup = function() {
+            uImg = loadImage("u.png");
+        }
+
         var width = 600;
         var height = 600;
 
@@ -33,10 +39,10 @@ var programCode = function(processingInstance) {
         snake = defaultSnake;
 
         keyPressed = function() {
-            if (key.toString() == "w" && dir != "s") nextDir = "w";
-            else if (key.toString() == "a" && dir != "d") nextDir = "a";
-            else if (key.toString() == "s" && dir != "w") nextDir = "s";
-            else if (key.toString() == "d" && dir != "a") nextDir = "d";
+            if ((key.toString() == "w" || key.toString() == "W") && dir != "s") nextDir = "w";
+            else if ((key.toString() == "a" || key.toString() == "A") && dir != "d") nextDir = "a";
+            else if ((key.toString() == "s" || key.toString() == "S") && dir != "w") nextDir = "s";
+            else if ((key.toString() == "d" || key.toString() == "D") && dir != "a") nextDir = "d";
 
             if (key.toString() == "1") speed = 1;
             else if (key.toString() == "2") speed = 2;
@@ -80,7 +86,6 @@ var programCode = function(processingInstance) {
             dir = "w";
             nextDir = "w";
             snake = defaultSnake.map(segment => [...segment]);
-            time = 1;
         }
 
         function respawn() {
@@ -194,6 +199,10 @@ var programCode = function(processingInstance) {
                         for (var i = 0; i < snake.length; i++) {
                             fill(i === 0 ? headColor : restColor);
                             rect(snake[i][0], snake[i][1], 25, 25);
+
+                            if (i == 0) {
+                                image(uImg, snake[i][0], snake[i][1], 25, 25)
+                            }
                         }
 
                         // Render food
