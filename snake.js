@@ -139,20 +139,20 @@ var programCode = function(processingInstance) {
 
                         background(50, 50, 50);
 
-                        if (head[1] > height) {
+                        if (head[1] > height-25) {
                             head[1] = 0
                         }
 
-                        if (head[0] > width) {
+                        if (head[0] > width-25) {
                             head[0] = 0
                         }
 
                         if (head[1] < 0) {
-                            head[1] = height
+                            head[1] = height-25
                         }
 
                         if (head[0] < 0) {
-                            head[0] = width
+                            head[0] = width-25
                         }
 
                         noStroke();
@@ -194,6 +194,8 @@ var programCode = function(processingInstance) {
                         }
 
                         snake = newSnake;
+
+                        console.log(snake[0][0], snake[0][1]);
 
                         // Render the snake
                         for (var i = 0; i < snake.length; i++) {
