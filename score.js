@@ -2,14 +2,21 @@ var score;
 
 var programCode = function(processingInstance) {
     with (processingInstance) {
-        var width = 200;
-        var height = 300;
+        var width = 236;
+        var height = 420;
+
+        var bg;
 
         size(width, height, 1);
         frameRate(10);
 
+        setup = function() {
+          bg = loadImage("score-bg.png");
+        }
+
         draw = function() {
-            background(25, 25, 25);
+            background(100, 100, 100);
+            image(bg, 0, 0);
 
             var baseScore = snake.length*100;
             score = baseScore-time;
@@ -25,30 +32,34 @@ var programCode = function(processingInstance) {
             score = roundScore*25;
 
             fill(255, 255, 255);
-            textSize(50)
-            text(score, 0, 50);
+            if (score > 99000) {
+                textSize(40);
+            } else {
+                textSize(50);
+            }
+            text(score, 40, 120);
 
-            textSize(20);
-            text("Snake length * 100", 0, 70);
-            text(snake.length+" * 100 = "+baseScore, 0, 90);
-            text("- time", 0, 110);
-            text(baseScore+" - "+time+" = "+(baseScore-time), 0, 130);
-            text("* 2", 0, 150);
+            textSize(15);
+            text("Snake length * 100", 45, 192);
+            text(snake.length+" * 100 = "+baseScore, 45, 210);
+            text("- time", 45, 226);
+            text(baseScore+" - "+time+" = "+(baseScore-time), 45, 246);
+            text("* 2", 45, 262);
 
             var now;
 
-            text(baseScore-time+" * 2 = "+(baseScore-time)*2, 0, 170);
+            text(baseScore-time+" * 2 = "+(baseScore-time)*2, 45, 280);
             now = (baseScore-time)*2;
-            text("- Time*10", 0, 190);
-            text(now+" - "+time*10+" = "+(now-time*10), 0, 210);
+            text("- Time*10", 45, 298);
+            text(now+" - "+time*10+" = "+(now-time*10), 45, 316);
             now = now-time*10;
-            text("Round to nearest 25", 0, 230);
+            text("Round to nearest 25", 45, 335);
 
             var divNow = now/25;
             var roundNow = Math.round(divNow);
             now = roundNow*25;
 
-            text("= "+now, 0, 250);
+            text("= "+now, 45, 370);
         };
     }
 };
