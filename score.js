@@ -43,15 +43,15 @@ var programCode = function(processingInstance) {
             text("Snake length * 100", 45, 192);
             text(snake.length+" * 100 = "+baseScore, 45, 210);
             text("- time", 45, 226);
-            text(baseScore+" - "+time+" = "+(baseScore-time), 45, 246);
+            text(baseScore+" - "+time.toFixed(2)+" = "+(baseScore-time).toFixed(2), 45, 246);
             text("* 2", 45, 262);
 
             var now;
 
-            text(baseScore-time+" * 2 = "+(baseScore-time)*2, 45, 280);
+            text((baseScore-time).toFixed(2)+" * 2 = "+((baseScore-time)*2).toFixed(2), 45, 280);
             now = (baseScore-time)*2;
             text("- Time*10", 45, 298);
-            text(now+" - "+time*10+" = "+(now-time*10), 45, 316);
+            text(now.toFixed(2)+" - "+(time*10).toFixed(2)+" = "+Math.round((now-time*10)), 45, 316);
             now = now-time*10;
             text("Round to nearest 25", 45, 335);
 
