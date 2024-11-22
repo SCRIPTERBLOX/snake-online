@@ -59,8 +59,8 @@ var programCode = function(processingInstance) {
         mousePressed = function() {
             if (onDeath) {
                 if (mouseX >= 150 && mouseX <= 150+125 && mouseY >= 325 && mouseY <= 325+75) {
-                    if (tokens >= 1) {
-                        tokens -= 1;
+                    if ((tokens-spentTokens) >= 1) {
+                        spentTokens++;
 
                         revive();
                     }
@@ -195,8 +195,6 @@ var programCode = function(processingInstance) {
 
                         snake = newSnake;
 
-                        console.log(snake[0][0], snake[0][1]);
-
                         // Render the snake
                         for (var i = 0; i < snake.length; i++) {
                             fill(i === 0 ? headColor : restColor);
@@ -222,18 +220,18 @@ var programCode = function(processingInstance) {
 
                     fill(0, 100, 0);
                     textSize(20);
-                    if (tokens > 1) {
-                        text("You currently have |"+tokens+"| revive tokens", 147, 285);
-                    } else if (tokens == 0) {
+                    if ((tokens-spentTokens) > 1) {
+                        text("You currently have |"+(tokens-spentTokens)+"| revive tokens", 147, 285);
+                    } else if ((tokens-spentTokens) == 0) {
                         text("You currently have no revive tokens", 147, 285);
                     } else {
-                        text("You currently have >"+tokens+"< revive token", 147, 285);
+                        text("You currently have >"+(tokens-spentTokens)+"< revive token", 147, 285);
                     }
 
                     textSize(14);
                     fill(100, 100, 100);
                     text("You gain one revive token every "+tokenDelay+" seconds.", 147, 300);
-                    text("In "+(tokenDelay-waitedTime)+" seconds you will get your next token", 147, 314);
+                    text("In "+(((tokenDelay*tokens)-waitedTime)+tokenDelay)+" seconds you will get your next token", 147, 314);
 
                     //buttons
                     fill(0, 255, 0);
@@ -255,9 +253,6 @@ var programCode = function(processingInstance) {
                     fill(255, 255, 255);
                     text("Revive tokens stay.", 328, 370);
                     text("Resets length", 328, 390);
-
-                    // detect click
-
                 }
            }
         };
