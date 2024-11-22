@@ -3,11 +3,13 @@ var programCode = function(processingInstance) {
         var width = 200;
         var height = 500;
 
+        var square;
+
         size(width, height, 1);
         frameRate(10);
 
         mousePressed = function() {
-            if (mouseX >= 12 && mouseX <= 62 && mouseY >= 10 && mouseY <= 60) {
+            if (mouseX >= 2 && mouseX <= 77 && mouseY >= 2 && mouseY <= 77) {
                 speed = 2;
             }
 
@@ -38,22 +40,26 @@ var programCode = function(processingInstance) {
             else if (key.toString() == "d" && dir != "a") nextDir = "d";
        };
 
+       setup = function() {
+            square = loadImage("button-square.png");
+       }
+
         draw = function() {
             background(25, 25, 25);
 
             fill(100, 100, 100);
 
-            rect(12, 10, 50, 50);
-            rect(74, 10, 50, 50);
-            rect(136, 10, 50, 50);
+            image(square, 2, 2, 67, 67);
+            image(square, 67, 2, 67, 67);
+            image(square, 132, 2, 67, 67);
 
             fill(255, 255, 255);
 
-            textSize(40);
+            textSize(30);
 
-            text("1X", 12, 50);
-            text("2X", 74, 50);
-            text("5X", 136, 50);
+            text("1X", 15, 45);
+            text("2X", 80, 45);
+            text("5X", 145, 45);
         };
     }
 };
