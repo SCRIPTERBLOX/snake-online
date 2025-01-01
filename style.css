@@ -1,0 +1,79 @@
+.archivo-black-regular {
+    font-family: "Archivo Black", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.noto-serif-tamil {
+    font-family: "Noto Serif Tamil", serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+}
+
+canvas {
+    border: 5px solid white;
+    border-radius: 15px;
+    display: block;
+}
+
+canvas:hover {
+    transform: translateY(-10px);
+    display: block;
+
+    border: 5px solid #c4c4c4;
+    border-radius: 15px;
+}
+
+body {
+    background: linear-gradient(to bottom, rgb(75, 75, 75), rgb(25, 25, 25));
+    height: 200vh;
+    position: relative;
+    text-align: center;
+}
+
+h1 {
+    font-family: sans-serif;
+    color: rgb(255, 255, 255);
+    font-size: 4.2em;
+    font-weight: bold;
+}
+
+td {
+    vertical-align: top;
+}
+
+td2 {
+    vertical-align: top;
+}
+
+h2 {
+    color: rgb(255, 255, 255);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.image-flow {
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('game-controller-grey.png');
+    background-size: 13% 7%;
+    background-repeat: repeat;
+    background-position: 100% 0%;
+    animation: infinite-flow 50s linear infinite;
+}
+
+@keyframes infinite-flow {
+    0% {
+        background-position: 0% 100%;
+    }
+    100% {
+        background-position: 100% 0%;
+    }
+}
